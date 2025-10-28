@@ -13,6 +13,13 @@
       background-color: #e5e7eb;
     }
   </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C0Y5PM7E86"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-C0Y5PM7E86');
+  </script>
 </head>
 
 <body>
@@ -24,7 +31,7 @@
     <p><strong>Email</strong>: skrisliu@gmail.com</p>
     <p>This paper is published in ISPRS Journal of Photogrammetry and Remote Sensing. <a
         href="https://doi.org/10.1016/j.isprsjprs.2020.04.008">[Paper]</a></p>
-    <p>Preprint via <a href="https://skrisliu.com/lcz/lcz_isprs_preprint.pdf">this link</a>. </p>
+    <p>Preprint via <a href="lcz_isprs_preprint.pdf">this link</a>. </p>
 
     <p>This is a GitHub repo at <a href="https://github.com/skrisliu/lcz">github.com/skrisliu/lcz</a>. </p>
 
@@ -74,7 +81,8 @@
         Google Drive</a>.</p>
     <p>The size of input is 64*64 with 10
       channels</p>
-    <pre class="highlight2">The channel order is (channel & Sentinel-2 band):[0,1,2,3,4,5,6,7,8,9] = [2,3,4,5,6,7,8,11,12,8A]</pre>
+    <pre
+      class="highlight2">The channel order is (channel & Sentinel-2 band):[0,1,2,3,4,5,6,7,8,9] = [2,3,4,5,6,7,8,11,12,8A]</pre>
     <p>Please use the following normalization when applying the model.<br>The subimage should be 64*64. </p>
     <pre class="highlight2"><code class="python">import keras
 modelfile = 'modelpath'model = keras.models.load_model(modelfile)
