@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LCZ Mapping. Local climate zone mapping as remote sensing scene classification using deep learning</title>
+  <link rel="stylesheet" href="https://skrisliu.com/css/font.css">
+  <link rel="stylesheet" href="https://skrisliu.com/css/style.css">
+  <style>
+    .highlight2 {
+      padding: 1rem;
+      background-color: #e5e7eb;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+
+    <h2>Local Climate Zone Mapping as Remote Sensing Scene Classification Using Deep Learning: A Case Study of
+      Metropolitan China</h2>
+    <p>Shengjie Liu, Qian Shi</p>
+    <p><strong>Email</strong>: skrisliu@gmail.com</p>
+    <p>This paper is published in ISPRS Journal of Photogrammetry and Remote Sensing. <a
+        href="https://doi.org/10.1016/j.isprsjprs.2020.04.008">[Paper]</a></p>
+    <p>Preprint via <a href="https://skrisliu.com/lcz/lcz_isprs_preprint.pdf">this link</a>. </p>
+
+    <p>This is a GitHub repo at <a href="https://github.com/skrisliu/lcz">github.com/skrisliu/lcz</a>. </p>
+
+
+    <hr>
+    <h2>New Data Released (2020-08-18)!</h2>
+    <p>We've generated a new product of the whole Pearl River Delta region (9+2 cities), available <a
+        href="https://skrisliu.com/lcz/data/release_lcz_prd_v20200818.zip"><strong>here</strong></a></p>
+    <h4>New Features</h4>
+    <ul>
+      <li>Used the Sentinel-2 composite images from 2018-2019 to generate the LCZ map, so the mosaic effect is reduced
+        to a minimum.</li>
+      <li>Included the whole administrative area of the following cities: Guangzhou, Foshan, Zhaoqing, Shenzhen,
+        Dongguan, Huizhou, Zhongshan, Jiangmen, Zhuhai, Macau, and Hong Kong (广州，佛山，肇庆，深圳，东莞，惠州，中山，江门，珠海，澳门，香港)</li>
+    </ul>
+    <h4>Pearl River Delta (The Greater Bay Area, old version)</h4>
+    <p>Tiff file is available <a href="https://sjliu.me/lcz/data/release_lcz_prd.zip"><strong>here</strong></a> (only
+      core urban areas
+      included)</p>
+    <p><img src="data/lczmap_prd.png" alt="Pearl River Delta (The Greater Bay Area)" width="80%"></p>
+
+    <hr>
+    <h2>Training and Testing Data</h2>
+    <p><a href="https://drive.google.com/open?id=1gqb3lDMcd3XpTYSbz6g6cFwRHrSfyLfY">Download Training and Testing Data
+        from Google Drive</a> or email me</p>
+    <table border="1">
+      <tr>
+        <td>Region</td>
+        <td>City</td>
+      </tr>
+      <tr>
+        <td>The Greater Bay Area</td>
+        <td>Guangzhou, Foshan, Shenzhen, Dongguan, Huizhou, Zhuhai, Zhongshan, Jiangmen, Macau, Hong Kong
+          广州，佛山，深圳，东莞，惠州，珠海，中山，江门，澳门，香港</td>
+      </tr>
+      <tr>
+        <td>The Shanghai Metropolis</td>
+        <td>Shanghai, Hangzhou, Shaoxing 上海，杭州，绍兴</td>
+      </tr>
+      <tr>
+        <td>The Beijing Metropolis</td>
+        <td>Beijing, Tianjin, Tangshan 北京，天津，及部分唐山</td>
+      </tr>
+    </table>
+    <h2>Load a pretrained model</h2>
+    <p><a href="https://drive.google.com/open?id=1iVKRaWvxu5RFjjCHyThP-G8BpTf5HOcG">Download Pretrained Model from
+        Google Drive</a>.</p>
+    <p>The size of input is 64*64 with 10
+      channels</p>
+    <pre class="highlight2">The channel order is (channel & Sentinel-2 band):[0,1,2,3,4,5,6,7,8,9] = [2,3,4,5,6,7,8,11,12,8A]</pre>
+    <p>Please use the following normalization when applying the model.<br>The subimage should be 64*64. </p>
+    <pre class="highlight2"><code class="python">import keras
+modelfile = 'modelpath'model = keras.models.load_model(modelfile)
+data = np.float32(data)data = data/5000.0
+for subimage in data:model.predict(subimage)</code></pre>
+
+  </div>
+</body>
+
+</html>
