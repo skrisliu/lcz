@@ -97,9 +97,12 @@
       class="highlight2">The channel order is (channel & Sentinel-2 band):[0,1,2,3,4,5,6,7,8,9] = [2,3,4,5,6,7,8,11,12,8A]</pre>
     <p>Please use the following normalization when applying the model.<br>The subimage should be 64*64. </p>
     <pre class="highlight2"><code class="python">import keras
-modelfile = 'modelpath'model = keras.models.load_model(modelfile)
-data = np.float32(data)data = data/5000.0
-for subimage in data:model.predict(subimage)</code></pre>
+modelfile = 'modelpath'
+model = keras.models.load_model(modelfile)
+data = np.float32(data)
+data = data/5000.0
+for subimage in data:
+	model.predict(subimage)</code></pre>
 
   </div>
 </body>
